@@ -13,6 +13,8 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import utilities.DBUtility;
+
 public class JDBCCOnnection {
  
 	String oracleDBUrl = "jdbc:oracle:thin:@ec2-34-219-73-53.us-west-2.compute.amazonaws.com:1521:xe"; 
@@ -23,10 +25,10 @@ public class JDBCCOnnection {
   public void oracleJDBC() throws SQLException {
 		
 		Connection connection = DriverManager.getConnection(oracleDBUrl, OracleDbUsername, oracleDbPassword);
-		Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement.executeQuery("SELECT * from countries");
 		
-		System.out.println(resultSet.getRow());
+		//System.out.println(resultSet.getRow());
 		
 		resultSet.next();
 		System.out.println(resultSet.getString(1));
@@ -35,14 +37,13 @@ public class JDBCCOnnection {
 //		resultSet.next();
 //		System.out.println(resultSet.getString(1));
 //		System.out.println(resultSet.getString("country_id"));
+		resultSet.last();
 		
 		resultSet.first();
 		System.out.println(resultSet.getRow());
 		
 		while(resultSet.next()) {
 			System.out.println(resultSet.getString(1));
-			
-		
 		}
 		
 		resultSet.close();
@@ -62,7 +63,8 @@ public class JDBCCOnnection {
 			ResultSetMetaData rMdata = resultSet.getMetaData();
 			//System.out.println("ColumnName: "+ rMdata.getColumnName(1));
 			//System.out.println("Column number: "+ rMdata.getColumnCount());
-
+			
+			//System.out.println("Column Types: +"DBUtility.colTypes("SELECT * from countries"));
 			
 			List<Map<String, Object>> list = new ArrayList<>();
 			int colCount = rMdata.getColumnCount();
