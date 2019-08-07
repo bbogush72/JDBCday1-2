@@ -127,20 +127,20 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<projectname>TestProject</projectname>
-							<!-- path to the report that will be generated -->
-							<outputdirectory>${project.build.directory}/cucumber-html-reports</outputdirectory>
+							<!--		<projectname>TestProject</projectname>   -->
+                                    <!-- path to the report that will be generated -->
+							<!--	<outputdirectory>${project.build.directory}/cucumber-html-reports</outputdirectory>   -->
 							<!-- path to the json file that will be used to genetrate report -->
 							<!-- it has to match the one on the cukesrunner -->
-							<cucumberoutput>${project.build.directory}/target/cucumber.json</cucumberoutput>
-							<enableflashcharts></enableflashcharts>
-						</configuration>
-					</execution>
-				</executions>
+							<!--	<cucumberoutput>${project.build.directory}/target/cucumber.json</cucumberoutput>      -->
+							<!--	<enableflashcharts></enableflashcharts>    -->
+                            </configuration>
+                        </execution>
+                    </executions>
 
-			</plugin>
-		</plugins>
-	</build>
+                </plugin>
+            </plugins>
+        </build>
 
 
-</project>
+    </project>
